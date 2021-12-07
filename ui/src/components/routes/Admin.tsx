@@ -18,12 +18,11 @@ const Admin = () => {
   const [version, setVersion] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [sucessMsg, setSuccessMsg] = useState("");
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | undefined>(undefined);
   const { addNotification, removeLastNotification } = useApp();
   // TODO: 5) Call the useProject() hook
   const { project, setProjectOrUndefined } = useProject();
-
-  let timeoutId: NodeJS.Timeout | null = null;
-
+  
   useEffect(() => {
     // TODO: 5) Check if there's a project in context and fill the form (you can create a function for that)
     if (project) {
@@ -67,19 +66,17 @@ const Admin = () => {
         await api.postProject(projectCreation);
         setSuccessMsg(t("admin.suc_network"));
       }
-      timeoutId = setTimeout(() => {
-        setSuccessMsg("");
-      }, 2000);
     } catch (e) {
       setErrorMsg(t("admin.err_network"));
-      timeoutId = setTimeout(() => {
-        setErrorMsg("");
-      }, 2000);
     } finally {
       removeLastNotification();
-      resetForm();
       // TODO: 5) Clean up the project context 
       setProjectOrUndefined(undefined);
+      const timeout = setTimeout(() => {
+        resetMessages();
+      }, 2000);
+      setTimeoutId(timeout);
+      resetForm();
     }
   }
 
@@ -94,9 +91,12 @@ const Admin = () => {
     setVersion(project.version);
   }
 
-  function resetForm() {
+  function resetMessages() {
     setErrorMsg("");
     setSuccessMsg("");
+  }
+
+  function resetForm() {
     setTitle("");
     setLink("");
     setDescription("");
