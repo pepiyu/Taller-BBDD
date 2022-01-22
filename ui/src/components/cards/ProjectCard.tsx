@@ -31,13 +31,13 @@ const ProjectCard = (props: ProjectCardProps) => {
             <CardVersionText>{project.version}</CardVersionText>
           </CardVersion>
           {/* TODO: 3) Add Kebab Button only when user is autenticated  */}
-          {/* TODO: 3) HINT: To Add 3 dots just do the following
-            <KebabButton [whatever you need here]>
+          {/* TODO: 3) HINT: To Add 3 dots just do the following*/}
+            <KebabButton>
               <KebabDot />
               <KebabDot />
               <KebabDot />
             </KebabButton>      
-          */}
+          
         </CardInfo>
         {/* TODO: 3) Add Menu only when user is autenticated and menu is toggled (menu is outside CardInfo) */}
         <CardCaption data-testid="caption">

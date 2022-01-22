@@ -52,6 +52,7 @@ const Admin = () => {
         timestamp: Date.now(),
       };
       addNotification("Posting...");
+      resetForm()
       // TODO: 5) call update if it's an update or post if its a creation
       await api.postProject(projectCreation);
       setSuccessMsg(t("admin.suc_network"));
