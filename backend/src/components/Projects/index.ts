@@ -2,6 +2,7 @@ import ProjectsService from './service';
 import { HttpError } from '@/config/error';
 import { IProjectsModel } from './model';
 import { NextFunction, Request, Response } from 'express';
+import { transcode } from 'buffer';
 
 /**
  * @export
@@ -57,6 +58,18 @@ export async function create(req: Request, res: Response, next: NextFunction): P
 // TODO: 6) Create a update method
 // HINT: This could be done in several ways, one straighfowrard way is to remove the old object and create a new one with the modified data.
 
+export async function update(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const remove: IProjectsModel = await ProjectsService.remove(req.body.id);
+        res.status(201).json(remove)
+
+        const aboutMe: IProjectsModel = await ProjectsService.insert(req.body);
+        res.status(201).json(aboutMe);
+
+    } catch (error) {
+        next(new HttpError(error.message.status, error.message))
+    }
+}
 /**
  * @export
  * @param {Request} req
