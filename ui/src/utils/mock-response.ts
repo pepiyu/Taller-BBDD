@@ -4,10 +4,12 @@ import { Project } from "../model/project";
 
 export const mockLogin = (userName: string, password: string) => new Promise<TokenResponse>(function (resolve, rejected) {
     setTimeout(() => {
-        if (userName === "user@threepoints.com" && password === "patata") {
+        if (userName === "yessica@threepoints.com" && password === "wakawaka") {
             resolve(JSON.parse(
                 `{
-                 "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODg0YmJiM2Q0YTRkNDk1ZDYyNGJhYyIsImVtYWlsIjoibHVjYXNmZXJuYW5kZXphcmFnb25AZ21haWwuY29tIiwiaWF0IjoxNjM2MzIyMzA3LCJleHAiOjE2MzYzMjU5MDd9.yxy7uKWXJx5rY8znRBTg5182llyH8Rs9R8C6_SM4LIg",
+                 "access_token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOnsidXNlcklkIjo2NjYsInJvbGUiOiJhZG1pbiIsInVzZXJOYW1lIjoiYWRtaW4iLCJkaXNwbGF5TmFtZSI6ImFkbWluIn0sImlhdCI6MTYwMTAyNzU1MywibmJmIjoxNjAxMDI3NTUzLCJleHAiOjE2MDExMTM5NTN9.vHgVtxKGmwDDLLVuT63UBkP8xe4a9hH0B3kkCsAh7K8",
+                 "expires_in": 3600,
+                 "token_type": "bearer"
                  }`
             ));
         } else {
@@ -33,11 +35,11 @@ export const mockAboutme = () => new Promise<AboutMe>(function (resolve, rejecte
         resolve(JSON.parse(
             `{
             "id":"12389asdfasf8",
-            "name":"Lucas Fernández Aragón",
-            "birthday":765817712000,
+            "name":"Yessica Bao Ye",
+            "birthday":627874534000,
             "nationality":"Spain",
-            "job":"Red Hat",
-            "github":"https://github.com/lucferbux"
+            "job":"Lumisa",
+            "github":"https://github.com/pepiyu"
             }`
         ));
     }, 500);
@@ -81,7 +83,6 @@ export const projects: Array<Project> = [
     "tag":"Api, Crud",
     "timestamp":765817712007
     }
-
 ]
 
 export const mockProjects = () => new Promise<Project[]>(function (resolve, rejected) {
@@ -95,4 +96,6 @@ export const mockProjects = () => new Promise<Project[]>(function (resolve, reje
 
 export const mockAddProject = (project: Project) => new Promise<Project>(function (resolve, rejected) {
     projects.push(project);
+
+
 })

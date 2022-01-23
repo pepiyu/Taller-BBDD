@@ -54,13 +54,13 @@ cd ../ui
 npm install
 ```
 
-o simplemente ejecutar `make install`
+o simplemente ejecutar `make install-dependencies`
 
 ### Ejecución Makefile
 
 Para la ejecución, usamos un **Makefile** con las instrucciones para las dos infraestructuras. Aquí puedes consultar el uso de los [Phony Targets](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html). Con el fichero Makefile puedes:
 
-1. Instalar las dependencias con `make install`
+1. Instalar las dependencias con `make install-dependencies`
 
 2. Para añadir la información a la bbdd:
    1. **linux** o **macOS**: Ejecuta `make dev-bbdd-start-populate`

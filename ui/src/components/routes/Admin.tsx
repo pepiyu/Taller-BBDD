@@ -1,11 +1,12 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import createApiClient from "../../api/api-client-factory";
 import useApp from "../../hooks/useApp";
-import { Project } from "../../model/project";
 import { themes } from "../../styles/ColorStyles";
 import { Caption, H1 } from "../../styles/TextStyles";
+import { Project } from "../../model/project";
+import createApiClient from "../../api/api-client-factory";
+
 
 const Admin = () => {
   const { t } = useTranslation();
@@ -17,71 +18,55 @@ const Admin = () => {
   const [version, setVersion] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [sucessMsg, setSuccessMsg] = useState("");
-  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | undefined>(undefined);
   const { addNotification, removeLastNotification } = useApp();
-  // TODO: 5) Call the useProject() hook
-
-  useEffect(() => {
-    // TODO: 5) Check if there's a project in context and fill the form (you can create a function for that)
-
-    return () => {
-      // TODO: 5) Clean up the project context when the component is unmounted
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, [timeoutId]);
 
   async function postProject(event: FormEvent<HTMLFormElement>) {
     dismissError();
     event.preventDefault();
+    const api = createApiClient();
     if (!readyToSubmit()) {
       setErrorMsg(t("admin.err_invalid_form"));
       return;
     }
-    const api = createApiClient();
     try {
-      // TODO: 5) Modify the project creation adding the _id and timestamp if it's an update
-      const projectCreation: Project = {
-        _id: undefined,
-        title: title,
-        description: description,
-        link: link,
-        tag: tags,
-        version: version,
-        timestamp: Date.now(),
-      };
+      const timestamp = new Date().getTime();
+      
+      const project: Project = {
+          id: generateUUID(),
+          title: title,
+          description: description,
+          version: version,
+          link: link,
+          tag: tags,
+          timestamp: timestamp,
+      }    
+  
+      await api.postProject(project)
       addNotification("Posting...");
-      resetForm()
-      // TODO: 5) call update if it's an update or post if its a creation
-      await api.postProject(projectCreation);
+      resetForm();
       setSuccessMsg(t("admin.suc_network"));
+      setTimeout(() => {setSuccessMsg("")}, 2000);
     } catch (e) {
       setErrorMsg(t("admin.err_network"));
     } finally {
       removeLastNotification();
-      resetForm();
-      const timeOut = setTimeout(() => {
-        removeMessages()
-      }, 2000);
-      setTimeoutId(timeOut);
-      // TODO: 5) Clean up the project context 
     }
   }
 
-  // TODO: 5) Create a function to fill the form
+  function generateUUID(): string {
+    return Math.floor((1 + Math.random()) * 0x100000000000)
+    .toString(16)
+    .substring(1);
+  }
 
   function resetForm() {
+    setErrorMsg("");
+    setSuccessMsg("");
     setTitle("");
     setLink("");
     setDescription("");
     setTags("");
     setVersion("");
-  }
-
-  function removeMessages() {
-    setErrorMsg("");
-    setSuccessMsg("");
   }
 
   function onChangeAnyInput() {

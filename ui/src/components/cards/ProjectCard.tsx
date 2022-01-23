@@ -32,11 +32,11 @@ const ProjectCard = (props: ProjectCardProps) => {
           </CardVersion>
           {/* TODO: 3) Add Kebab Button only when user is autenticated  */}
           {/* TODO: 3) HINT: To Add 3 dots just do the following*/}
-            <KebabButton>
+            {/*<KebabButton>
               <KebabDot />
               <KebabDot />
               <KebabDot />
-            </KebabButton>      
+            </KebabButton>   */}   
           
         </CardInfo>
         {/* TODO: 3) Add Menu only when user is autenticated and menu is toggled (menu is outside CardInfo) */}

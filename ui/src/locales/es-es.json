@@ -1,15 +1,14 @@
 {
     "meta": {
-        "title": "Portfolio",
+        "title": "Yessica Bao Diseño Web",
         "description": "Personal Portfolio Webpage"
     },
     "app": {
-        "title": "Bienvenid@s a mi Web Portfolio"
+        "title": "Yessica Bao Diseño Web"
     },
     "landing": {
-        "title": "Bienvenido a mi Portfolio"
-    },
-    "loader" : {
+        "title": "Yessica Bao Diseño Web"
+    },    "loader" : {
         "text": "cargando..."
     },
     "dashboard" : {
@@ -27,7 +26,6 @@
         "err_invalid_form": "Elementos no pueden estar vacíos",
         "err_network": "Error publicando el Proyecto",
         "suc_network": "Proyecto publicado",
-        "suc_network_update": "Proyecto actualizado",
         "header": "Project Input",
         "input_title": "Título",
         "input_description": "Descripción",
@@ -37,10 +35,22 @@
         "button_accept": "Publicar",
         "button_delete": "Eliminar"
     },
+    "project": {
+        "err_titl_descrip": "Título y descripción no pueden estar vacíos",
+        "title_placeholder": "Título",
+        "description_placeholder": "Descripción",
+        "tag_placeholder": "Etiqueta",
+        "version_placeholder": "Versión",
+        "button_post": "Postear",
+        "button_back": "Volver",
+        "button_delete": "Eliminar",
+        "project_title": "Proyect Input"
+    },
     "nav": {
         "home": "Inicio",
         "dashboard": "Dashboard",
-        "admin": "Admin"
+        "admin": "Admin",
+        "project": "Proyecto"
     },
     "aboutMeCard": {
         "name": "Nombre",

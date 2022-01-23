@@ -3,13 +3,13 @@
  * @export
  * @interface Project
  */
-export interface Project {
+ export interface Project {
     /**
      * 
      * @type {string}
      * @memberof Project
      */
-    _id?: string;
+    id: string;
     /**
      * 
      * @type {string}
@@ -45,5 +45,5 @@ export interface Project {
      * @type {number}
      * @memberof Project
      */
-    timestamp: number;
+     timestamp: number;
 }

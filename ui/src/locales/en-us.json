@@ -1,13 +1,13 @@
 {
     "meta": {
-        "title": "Portfolio",
+        "title": "Web Designer Yessica Bao",
         "description": "Personal Portfolio Webpage"
     },
     "app": {
-        "title": "Welcome to my Portfolio Webpage"
+        "title": "Web Designer Yessica Bao"
     },
     "landing": {
-        "title": "Welcome to my Portfolio"
+        "title": "Web Designer Yessica Bao"
     },
     "loader" : {
         "text": "loading..."
@@ -27,7 +27,6 @@
         "err_invalid_form": "Inputs must not be null",
         "err_network": "Error posting project",
         "suc_network": "Project posted",
-        "suc_network_update": "Project updated",
         "header": "Project Input",
         "input_title": "Title",
         "input_description": "Description",
@@ -37,10 +36,22 @@
         "button_accept": "Post",
         "button_delete": "Delete"
     },
+    "project": {
+        "err_titl_descrip": "Title and description must not be null",
+        "title_placeholder": "Title",
+        "description_placeholder": "Descripcion",
+        "tag_placeholder": "Tag",
+        "version_placeholder": "Version",
+        "button_post": "Post",
+        "button_back": "Back",
+        "button_delete": "Delete",
+        "project_title": "Project Input"
+    },
     "nav": {
         "home": "Home",
         "dashboard": "Dashboard",
-        "admin": "Admin"
+        "admin": "Admin",
+        "project": "Project"
     },
     "aboutMeCard": {
         "name": "Name",
